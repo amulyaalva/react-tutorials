@@ -5,37 +5,35 @@ import ReactDOM from 'react-dom';
 //   return <h1>{new Date().toLocaleTimeString()}</h1>
 // }
 
-class Clock extends React.Component{
+class Inc extends React.Component{
   constructor(props){
+
     super(props);
-    this.state={
-         date:new Date()
-         }
+    this.state={counter:0}
   }
 
-  componentDidMount(){
-    this.timer=  setInterval(()=>this.start(),1000);
-  }
 
-  componentWillUnmount(){
-    clearInterval(this.timer);
-  }
-        start(){
-    this.setState({
-      date:new Date()
-    });
-  }
+// ComponentMount(){
+//
+// }
+//
+// ComponentWillMount(){
+//
+// }
+//
+// start(){
+//
+// }
 
+increment=(e)=>{
+  e.preventDefault();
+  this.setState({
+counter:this.state.counter+1
+});
+}
   render(){
-    return  <h1>{this.state.date.toLocaleTimeString()}</h1>
+    return <a href='http://google.com' onClick={this.increment}>Value is:---{this.state.counter}</a>
   }
 }
 
-
-ReactDOM.render(
-  <Clock/> ,
-  document.getElementById('root')
-);
-
-
-//setInterval(time,1000);
+ReactDOM.render(<Inc/>,document.getElementById('root'))
